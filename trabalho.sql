@@ -9,7 +9,8 @@ CREATE TABLE Acervo(
 id INT PRIMARY KEY,
 nome VARCHAR(100),
 descricao TEXT,
-data_criacao DATE);
+data_criacao DATE
+ );
 
 ALTER TABLE documento
 ADD COLUMN acervo_id INT,
