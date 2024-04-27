@@ -20,3 +20,9 @@ CREATE TABLE pesquisador(
  afiliacao VARCHAR(100),
  matricula VARCHAR(30) PRIMARY KEY
 );
+
+CREATE TABLE Pesquisador_Acervo(
+pesquisador_matricula VARCHAR(30) REFERENCES Pesquisador(matricula),
+acervo_id INT REFERENCES Acervo(id),
+PRIMARY KEY (pesquisador_matricula, acervo_id)
+ );
