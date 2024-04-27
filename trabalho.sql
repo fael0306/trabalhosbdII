@@ -6,11 +6,10 @@ CREATE TABLE Documento(
 );
 
 CREATE TABLE Acervo(
-id INT PRIMARY KEY,
-nome VARCHAR(100),
-descricao TEXT,
-data_criacao DATE
- );
+    id INT PRIMARY KEY,
+    tema VARCHAR(100),
+    instituicao VARCHAR(100)
+);
 
 ALTER TABLE documento
 ADD COLUMN acervo_id INT,
