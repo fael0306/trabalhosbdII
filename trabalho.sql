@@ -18,5 +18,5 @@ ADD FOREIGN KEY (acervo_id) REFERENCES Acervo(id);
 CREATE TABLE pesquisador(
  nome VARCHAR(50),
  afiliacao VARCHAR(100),
- matricula VARCHAR(30)
+ matricula VARCHAR(30) PRIMARY KEY
 );
