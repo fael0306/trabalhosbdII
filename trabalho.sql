@@ -31,3 +31,7 @@ CREATE TABLE Pesquisador_Acervo(
     pesquisador_matricula, acervo_id
   )
 );
+
+CREATE INDEX idx_datas_brin
+ON Documento
+USING BRIN (Datas);
