@@ -35,3 +35,9 @@ CREATE TABLE Pesquisador_Acervo(
 CREATE INDEX idx_datas_brin
 ON Documento
 USING BRIN (Datas);
+
+INSERT INTO Acervo (tema, instituicao) VALUES ('Emilio Mira y López', 'UERJ');
+INSERT INTO Acervo (tema, instituicao) VALUES ('Celso Pereira de Sá', 'UERJ');
+INSERT INTO Acervo (tema, instituicao) VALUES ('Isabel Adrados', 'UERJ');
+INSERT INTO Acervo (tema, instituicao) VALUES ('Farias Brito', 'UERJ');
+INSERT INTO Acervo (tema, instituicao) VALUES ('Jayme Grabois', 'UERJ');
