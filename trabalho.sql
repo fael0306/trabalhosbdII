@@ -41,3 +41,8 @@ INSERT INTO Acervo (tema, instituicao) VALUES ('Celso Pereira de Sá', 'UERJ');
 INSERT INTO Acervo (tema, instituicao) VALUES ('Isabel Adrados', 'UERJ');
 INSERT INTO Acervo (tema, instituicao) VALUES ('Farias Brito', 'UERJ');
 INSERT INTO Acervo (tema, instituicao) VALUES ('Jayme Grabois', 'UERJ');
+
+/*
+Inserir 5 documentos em cada Acervo e 2 pesquisadores em cada acervo de forma que cada pesquisador esteja em 2 acervos.
+Para isso, precisa de 25 documentos e 10 pesquisadores.
+*/
