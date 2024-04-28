@@ -6,7 +6,7 @@ CREATE TABLE Documento(
 );
 
 CREATE TABLE Acervo(
-  id INT PRIMARY KEY, 
+  id SERIAL PRIMARY KEY, 
   tema VARCHAR(100), 
   instituicao VARCHAR(100)
 );
