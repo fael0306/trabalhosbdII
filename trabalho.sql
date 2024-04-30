@@ -64,6 +64,8 @@ VALUES
     1
   );
 
+INSERT INTO documento(Titulo, Datas, Autor, Conteudo, acervo_id) VALUES ('Manual de Psicología Jurídica','01/01/1932','Emilio Mira y Lopez','Explora a interface entre psicologia e direito.',1);
+
 /*
 Inserir 5 documentos em cada Acervo e 2 pesquisadores em cada acervo de forma que cada pesquisador esteja em 2 acervos.
 Para isso, precisa de 25 documentos e 10 pesquisadores.
