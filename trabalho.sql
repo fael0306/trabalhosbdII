@@ -60,7 +60,7 @@ VALUES
   (
     'Teoria y práctica del psicoanálisis', 
     '01/02/1926', 'Emilio Mira y López', 
-    'Uma das primeiras obras de Mira y López, este livro apresenta uma visão geral da psicanálise freudiana, incluindo seus conceitos-chave, métodos terapêuticos e aplicações em diversos campos. O autor também oferece reflexões críticas sobre a teoria e sua relevância para a prática clínica.', 
+    'Apresenta uma visão geral da psicanálise freudiana.', 
     1
   );
 
