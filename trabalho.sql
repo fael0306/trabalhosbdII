@@ -109,5 +109,5 @@ VALUES
 
 /*
 Inserir 5 documentos em cada Acervo e 2 pesquisadores em cada acervo de forma que cada pesquisador esteja em 2 acervos.
-Para isso, precisa de 25 documentos e 10 pesquisadores.
+Para isso, precisa de 25 documentos e 5 pesquisadores.
 */
