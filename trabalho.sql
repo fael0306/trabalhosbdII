@@ -75,6 +75,29 @@ VALUES
     1
   );
 
+INSERT INTO Documento(
+  Titulo, Datas, Autor, Conteudo, acervo_id
+) 
+VALUES 
+  (
+    'Manual de Psiquiatria', 
+    '03/06/1935', 'Emilio Mira y Lopez', 
+    'Fornece uma visão dos transtornos mentais da época.', 
+    1
+  );
+
+INSERT INTO Documento(
+  Titulo, Datas, Autor, Conteudo, acervo_id
+) 
+VALUES 
+  ('Psicodiagnóstico Miocinético (PMK)', 
+    '07/11/1940', 'Emilio Mira y Lopez', 
+    'Teste projetivo para avaliar o indivíduo.', 
+    1                                                                                                            
+  );
+
+INSERT INTO documento(Titulo, Datas, Autor, Conteudo, acervo_id) VALUES ('Cuatro gigantes del alma','09/08/1959','Emilio Mira y Lopez','Explora as 4 emoções básicas.',1);
+
 /*
 Inserir 5 documentos em cada Acervo e 2 pesquisadores em cada acervo de forma que cada pesquisador esteja em 2 acervos.
 Para isso, precisa de 25 documentos e 10 pesquisadores.
