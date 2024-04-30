@@ -17,7 +17,6 @@ ADD
   COLUMN acervo_id INT, 
 ADD 
   FOREIGN KEY (acervo_id) REFERENCES Acervo(id);
-
 CREATE TABLE pesquisador(
   nome VARCHAR(50), 
   afiliacao VARCHAR(100), 
@@ -32,15 +31,38 @@ CREATE TABLE Pesquisador_Acervo(
   )
 );
 
-CREATE INDEX idx_datas_brin
-ON Documento
-USING BRIN (Datas);
+CREATE INDEX idx_datas_brin ON Documento USING BRIN (Datas);
 
-INSERT INTO Acervo (tema, instituicao) VALUES ('Emilio Mira y López', 'UERJ');
-INSERT INTO Acervo (tema, instituicao) VALUES ('Celso Pereira de Sá', 'UERJ');
-INSERT INTO Acervo (tema, instituicao) VALUES ('Isabel Adrados', 'UERJ');
-INSERT INTO Acervo (tema, instituicao) VALUES ('Farias Brito', 'UERJ');
-INSERT INTO Acervo (tema, instituicao) VALUES ('Jayme Grabois', 'UERJ');
+INSERT INTO Acervo (tema, instituicao) 
+VALUES 
+  ('Emilio Mira y López', 'UERJ');
+  
+INSERT INTO Acervo (tema, instituicao) 
+VALUES 
+  ('Celso Pereira de Sá', 'UERJ');
+  
+INSERT INTO Acervo (tema, instituicao) 
+VALUES 
+  ('Isabel Adrados', 'UERJ');
+  
+INSERT INTO Acervo (tema, instituicao) 
+VALUES 
+  ('Farias Brito', 'UERJ');
+  
+INSERT INTO Acervo (tema, instituicao) 
+VALUES 
+  ('Jayme Grabois', 'UERJ');
+  
+INSERT INTO Documento(
+  Titulo, Datas, Autor, Conteudo, acervo_id
+) 
+VALUES 
+  (
+    'Teoria y práctica del psicoanálisis', 
+    '01/02/1926', 'Emilio Mira y López', 
+    'Uma das primeiras obras de Mira y López, este livro apresenta uma visão geral da psicanálise freudiana, incluindo seus conceitos-chave, métodos terapêuticos e aplicações em diversos campos. O autor também oferece reflexões críticas sobre a teoria e sua relevância para a prática clínica.', 
+    1
+  );
 
 /*
 Inserir 5 documentos em cada Acervo e 2 pesquisadores em cada acervo de forma que cada pesquisador esteja em 2 acervos.
