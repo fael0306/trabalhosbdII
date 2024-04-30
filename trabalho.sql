@@ -64,7 +64,7 @@ VALUES
     1
   );
   
-INSERT INTO documento(
+INSERT INTO Documento(
   Titulo, Datas, Autor, Conteudo, acervo_id
 ) 
 VALUES 
