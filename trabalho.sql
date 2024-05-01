@@ -354,3 +354,17 @@ VALUES
   (
     'Mariana Almeida Araújo','UFRS','3698745'      
   );
+
+INSERT INTO pesquisador_acervo(
+  pesquisador_matricula, acervo_id     
+) 
+VALUES 
+  (
+    '1236987',1);
+
+INSERT INTO pesquisador_acervo(
+  pesquisador_matricula, acervo_id     
+) 
+VALUES 
+  (
+    '9865321',1);
