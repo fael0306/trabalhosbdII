@@ -411,6 +411,7 @@ INSERT INTO pesquisador_acervo(
 VALUES 
   ('7453200',5),('9865321',5);
 
+
 -- Consulta do cenário de utilização
 SELECT 
     d.Titulo, 
