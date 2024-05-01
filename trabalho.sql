@@ -264,3 +264,13 @@ VALUES
     'Jornal do Brasil', 'Palestra de Eliezer Schneider sobre conflito de gerações.', 
     4
   );
+
+INSERT INTO Documento(
+  Titulo, Datas, Autor, Conteudo, acervo_id
+) 
+VALUES 
+  (
+    'História da Psicologia no Rio de Janeiro', '05/04/1992', 
+    'Antonio Gomes Penna', 'Desenvolvimento da Psicologia no Rio de Janeiro', 
+    5
+  );
