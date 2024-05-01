@@ -284,3 +284,13 @@ VALUES
     'Antonio Gomes Penna', 'Comentários epistemológicos sobre as ideias psicológicas.', 
     5
   );
+
+INSERT INTO Documento(
+  Titulo, Datas, Autor, Conteudo, acervo_id
+) 
+VALUES 
+  (
+    'Antonio Gomes Penna: Uma trajetória (...)', '04/08/2010', 
+    'Ana Maria Jacó-Vilela', 'Artigo biográfico sobre o Antonio Gomes Penna.', 
+    5
+  );
