@@ -347,3 +347,10 @@ VALUES
     'Bianca Gonçalves Lima','UERJ','7453200'      
   );   
 
+INSERT INTO Pesquisador(
+  nome, afiliacao, matricula     
+) 
+VALUES 
+  (
+    'Mariana Almeida Araújo','UFRS','3698745'      
+  );
