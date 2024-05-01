@@ -48,7 +48,7 @@ VALUES
   
 INSERT INTO Acervo (tema, instituicao) 
 VALUES 
-  ('Farias Brito', 'UERJ');
+  ('Eliezer Schneider', 'UERJ');
   
 INSERT INTO Acervo (tema, instituicao) 
 VALUES 
