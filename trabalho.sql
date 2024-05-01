@@ -17,7 +17,6 @@ ADD
   COLUMN acervo_id INT, 
 ADD 
   FOREIGN KEY (acervo_id) REFERENCES Acervo(id);
-  
 CREATE TABLE pesquisador(
   nome VARCHAR(50), 
   afiliacao VARCHAR(100), 
@@ -37,23 +36,23 @@ CREATE INDEX idx_datas_brin ON Documento USING BRIN (Datas);
 INSERT INTO Acervo (tema, instituicao) 
 VALUES 
   ('Emilio Mira y López', 'UERJ');
-  
+
 INSERT INTO Acervo (tema, instituicao) 
 VALUES 
   ('Celso Pereira de Sá', 'UERJ');
-  
+
 INSERT INTO Acervo (tema, instituicao) 
 VALUES 
   ('Isabel Adrados', 'UERJ');
-  
+
 INSERT INTO Acervo (tema, instituicao) 
 VALUES 
   ('Eliezer Schneider', 'UERJ');
-  
+
 INSERT INTO Acervo (tema, instituicao) 
 VALUES 
   ('Jayme Grabois', 'UERJ');
-  
+
 INSERT INTO Documento(
   Titulo, Datas, Autor, Conteudo, acervo_id
 ) 
@@ -64,7 +63,7 @@ VALUES
     'Visão geral da psicanálise freudiana.', 
     1
   );
-  
+
 INSERT INTO Documento(
   Titulo, Datas, Autor, Conteudo, acervo_id
 ) 
@@ -75,7 +74,7 @@ VALUES
     'Explora a interface entre psicologia e direito.', 
     1
   );
-  
+
 INSERT INTO Documento(
   Titulo, Datas, Autor, Conteudo, acervo_id
 ) 
@@ -112,8 +111,9 @@ INSERT INTO Documento(
 ) 
 VALUES 
   (
-    'Estudos de Psicologia Social', '23/05/2015', 
-    'Celso Pereira de Sá', 'Manual sobre vertentes da Psicologia Social.', 
+    'Estudos de Psicologia Social', 
+    '23/05/2015', 'Celso Pereira de Sá', 
+    'Manual sobre vertentes da Psicologia Social.', 
     2
   );
 
@@ -122,8 +122,9 @@ INSERT INTO Documento(
 ) 
 VALUES 
   (
-    'Pesquisa em Representações Sociais', '03/09/1998', 
-    'Celso Pereira de Sá', 'Metodologia em representações sociais.', 
+    'Pesquisa em Representações Sociais', 
+    '03/09/1998', 'Celso Pereira de Sá', 
+    'Metodologia em representações sociais.', 
     2
   );
 
@@ -132,8 +133,9 @@ INSERT INTO Documento(
 ) 
 VALUES 
   (
-    'Memórias do Descobrimento do Brasil', '25/05/2005', 
-    'Celso Pereira de Sá', 'Disserta sobre a história do Brasil.', 
+    'Memórias do Descobrimento do Brasil', 
+    '25/05/2005', 'Celso Pereira de Sá', 
+    'Disserta sobre a história do Brasil.', 
     2
   );
 
@@ -142,8 +144,9 @@ INSERT INTO Documento(
 ) 
 VALUES 
   (
-    'Psicologia do Controle Social', '03/09/1973', 
-    'Celso Pereira de Sá', 'Perspectivas de questões sociológicas na sociologia.', 
+    'Psicologia do Controle Social', 
+    '03/09/1973', 'Celso Pereira de Sá', 
+    'Perspectivas de questões sociológicas na sociologia.', 
     2
   );
 
@@ -152,8 +155,9 @@ INSERT INTO Documento(
 ) 
 VALUES 
   (
-    'Sobre a Psicologia Social no Brasil', '21/10/2007', 
-    'Celso Pereira de Sá', 'História da Psicologia Social no Brasil.', 
+    'Sobre a Psicologia Social no Brasil', 
+    '21/10/2007', 'Celso Pereira de Sá', 
+    'História da Psicologia Social no Brasil.', 
     2
   );
 
@@ -172,8 +176,9 @@ INSERT INTO Documento(
 ) 
 VALUES 
   (
-    'A Técnica de Rorschach em crianças', '08/04/1985', 
-    'Isabel Adrados', 'Manual de aplicação de testes projetivos em crianças.', 
+    'A Técnica de Rorschach em crianças', 
+    '08/04/1985', 'Isabel Adrados', 
+    'Manual de aplicação de testes projetivos em crianças.', 
     3
   );
 
@@ -182,21 +187,23 @@ INSERT INTO Documento(
 ) 
 VALUES 
   (
-    'Teoria e Prática do Teste de Rorschach', '09/11/1982', 
-    'Isabel Adrados', 'Manual teórico de testes projetivos em crianças.', 
+    'Teoria e Prática do Teste de Rorschach', 
+    '09/11/1982', 'Isabel Adrados', 
+    'Manual teórico de testes projetivos em crianças.', 
     3
   );
-
+  
 INSERT INTO Documento(
   Titulo, Datas, Autor, Conteudo, acervo_id
 ) 
 VALUES 
   (
-    'Rorschach na adolescência normal e patológica', '07/06/1976', 
-    'Isabel Adrados', 'Aplicação de Rorschach na adolescência.', 
+    'Rorschach na adolescência normal e patológica', 
+    '07/06/1976', 'Isabel Adrados', 
+    'Aplicação de Rorschach na adolescência.', 
     3
   );
-
+  
 INSERT INTO Documento(
   Titulo, Datas, Autor, Conteudo, acervo_id
 ) 
@@ -206,8 +213,3 @@ VALUES
     'Isabel Adrados', 'Instrução da atuação do psicólogo frente a diagnósticos.', 
     3
   );
-
-/*
-Inserir 5 documentos em cada Acervo e 2 pesquisadores em cada acervo de forma que cada pesquisador esteja em 2 acervos.
-Para isso, precisa de 25 documentos e 5 pesquisadores.
-*/
