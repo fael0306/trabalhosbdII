@@ -52,7 +52,7 @@ VALUES
 
 INSERT INTO Acervo (tema, instituicao) 
 VALUES 
-  ('Jayme Grabois', 'UERJ');
+  ('Antonio Gomes Penna', 'UERJ');
 
 INSERT INTO Documento(
   Titulo, Datas, Autor, Conteudo, acervo_id
