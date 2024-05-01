@@ -4,26 +4,22 @@ CREATE TABLE Documento(
   Autor VARCHAR(50), 
   Conteudo TEXT
 );
-
 CREATE TABLE Acervo(
   id SERIAL PRIMARY KEY, 
   tema VARCHAR(100), 
   instituicao VARCHAR(100)
 );
-
 ALTER TABLE 
   documento 
 ADD 
   COLUMN acervo_id INT, 
 ADD 
   FOREIGN KEY (acervo_id) REFERENCES Acervo(id);
-
 CREATE TABLE pesquisador(
   nome VARCHAR(50), 
   afiliacao VARCHAR(100), 
   matricula VARCHAR(30) PRIMARY KEY
 );
-
 CREATE TABLE Pesquisador_Acervo(
   pesquisador_matricula VARCHAR(30) REFERENCES Pesquisador(matricula), 
   acervo_id INT REFERENCES Acervo(id), 
@@ -31,29 +27,22 @@ CREATE TABLE Pesquisador_Acervo(
     pesquisador_matricula, acervo_id
   )
 );
-
 CREATE INDEX idx_datas_brin ON Documento USING BRIN (Datas);
-
 INSERT INTO Acervo (tema, instituicao) 
 VALUES 
   ('Emilio Mira y López', 'UERJ');
-
 INSERT INTO Acervo (tema, instituicao) 
 VALUES 
   ('Celso Pereira de Sá', 'UERJ');
-
 INSERT INTO Acervo (tema, instituicao) 
 VALUES 
   ('Isabel Adrados', 'UERJ');
-
 INSERT INTO Acervo (tema, instituicao) 
 VALUES 
   ('Eliezer Schneider', 'UERJ');
-
 INSERT INTO Acervo (tema, instituicao) 
 VALUES 
   ('Antonio Gomes Penna', 'UERJ');
-
 INSERT INTO Documento(
   Titulo, Datas, Autor, Conteudo, acervo_id
 ) 
@@ -64,7 +53,6 @@ VALUES
     'Visão geral da psicanálise freudiana.', 
     1
   );
-
 INSERT INTO Documento(
   Titulo, Datas, Autor, Conteudo, acervo_id
 ) 
@@ -75,7 +63,6 @@ VALUES
     'Explora a interface entre psicologia e direito.', 
     1
   );
-
 INSERT INTO Documento(
   Titulo, Datas, Autor, Conteudo, acervo_id
 ) 
@@ -85,7 +72,6 @@ VALUES
     'Emilio Mira y Lopez', 'Percepção dos transtornos mentais da época.', 
     1
   );
-  
 INSERT INTO Documento(
   Titulo, Datas, Autor, Conteudo, acervo_id
 ) 
@@ -96,7 +82,6 @@ VALUES
     'Teste projetivo para avaliar o indivíduo.', 
     1
   );
-  
 INSERT INTO Documento(
   Titulo, Datas, Autor, Conteudo, acervo_id
 ) 
@@ -106,7 +91,6 @@ VALUES
     'Emilio Mira y Lopez', 'Explora as 4 emoções básicas.', 
     1
   );
-
 INSERT INTO Documento(
   Titulo, Datas, Autor, Conteudo, acervo_id
 ) 
@@ -117,7 +101,6 @@ VALUES
     'Manual sobre vertentes da Psicologia Social.', 
     2
   );
-
 INSERT INTO Documento(
   Titulo, Datas, Autor, Conteudo, acervo_id
 ) 
@@ -128,7 +111,6 @@ VALUES
     'Metodologia em representações sociais.', 
     2
   );
-
 INSERT INTO Documento(
   Titulo, Datas, Autor, Conteudo, acervo_id
 ) 
@@ -139,7 +121,6 @@ VALUES
     'Disserta sobre a história do Brasil.', 
     2
   );
-
 INSERT INTO Documento(
   Titulo, Datas, Autor, Conteudo, acervo_id
 ) 
@@ -150,7 +131,6 @@ VALUES
     'Perspectivas de questões sociológicas na sociologia.', 
     2
   );
-
 INSERT INTO Documento(
   Titulo, Datas, Autor, Conteudo, acervo_id
 ) 
@@ -161,7 +141,6 @@ VALUES
     'História da Psicologia Social no Brasil.', 
     2
   );
-
 INSERT INTO Documento(
   Titulo, Datas, Autor, Conteudo, acervo_id
 ) 
@@ -171,7 +150,6 @@ VALUES
     'Isabel Adrados', 'Explanação sobre questões da infância.', 
     3
   );
-
 INSERT INTO Documento(
   Titulo, Datas, Autor, Conteudo, acervo_id
 ) 
@@ -182,7 +160,6 @@ VALUES
     'Manual de aplicação de testes projetivos em crianças.', 
     3
   );
-
 INSERT INTO Documento(
   Titulo, Datas, Autor, Conteudo, acervo_id
 ) 
@@ -193,7 +170,6 @@ VALUES
     'Manual teórico de testes projetivos em crianças.', 
     3
   );
-  
 INSERT INTO Documento(
   Titulo, Datas, Autor, Conteudo, acervo_id
 ) 
@@ -204,7 +180,6 @@ VALUES
     'Aplicação de Rorschach na adolescência.', 
     3
   );
-  
 INSERT INTO Documento(
   Titulo, Datas, Autor, Conteudo, acervo_id
 ) 
@@ -214,7 +189,6 @@ VALUES
     'Isabel Adrados', 'Instrução da atuação do psicólogo frente a diagnósticos.', 
     3
   );
-
 INSERT INTO Documento(
   Titulo, Datas, Autor, Conteudo, acervo_id
 ) 
@@ -224,37 +198,36 @@ VALUES
     'Ana Maria Jacó-Vilela', 'Coleção: Pioneiros da Psicologia Brasileira', 
     4
   );
-
 INSERT INTO Documento(
   Titulo, Datas, Autor, Conteudo, acervo_id
 ) 
 VALUES 
   (
-    'Psicologia Social - Histórica Cultural e Política', '28/09/1978', 
-    'Eliezer Schneider', 'Manual de Psicologia Social', 
+    'Psicologia Social - Histórica Cultural e Política', 
+    '28/09/1978', 'Eliezer Schneider', 
+    'Manual de Psicologia Social', 
     4
   );
-
 INSERT INTO Documento(
   Titulo, Datas, Autor, Conteudo, acervo_id
 ) 
 VALUES 
   (
-    'Eliezer Schneider, professor, 81 anos', '04/09/1998', 
-    'Antônio Gomes Penna', 'Jornal O Globo - Obituário', 
+    'Eliezer Schneider, professor, 81 anos', 
+    '04/09/1998', 'Antônio Gomes Penna', 
+    'Jornal O Globo - Obituário', 
     4
   );
-
 INSERT INTO Documento(
   Titulo, Datas, Autor, Conteudo, acervo_id
 ) 
 VALUES 
   (
     'Eliezer Schneider', '23/10/1996', 
-    'Elza Maria do Socorro Dutra', 'Entrevista com Eliezer Schneider', 
+    'Elza Maria do Socorro Dutra', 
+    'Entrevista com Eliezer Schneider', 
     4
   );
-
 INSERT INTO Documento(
   Titulo, Datas, Autor, Conteudo, acervo_id
 ) 
@@ -264,169 +237,144 @@ VALUES
     'Jornal do Brasil', 'Palestra de Eliezer Schneider sobre conflito de gerações.', 
     4
   );
-
 INSERT INTO Documento(
   Titulo, Datas, Autor, Conteudo, acervo_id
 ) 
 VALUES 
   (
-    'História da Psicologia no Rio de Janeiro', '05/04/1992', 
-    'Antonio Gomes Penna', 'Desenvolvimento da Psicologia no Rio de Janeiro', 
+    'História da Psicologia no Rio de Janeiro', 
+    '05/04/1992', 'Antonio Gomes Penna', 
+    'Desenvolvimento da Psicologia no Rio de Janeiro', 
     5
   );
-
 INSERT INTO Documento(
   Titulo, Datas, Autor, Conteudo, acervo_id
 ) 
 VALUES 
   (
-    'História das ideias psicológicas', '05/01/1991', 
-    'Antonio Gomes Penna', 'Comentários epistemológicos sobre as ideias psicológicas.', 
+    'História das ideias psicológicas', 
+    '05/01/1991', 'Antonio Gomes Penna', 
+    'Comentários epistemológicos sobre as ideias psicológicas.', 
     5
   );
-
 INSERT INTO Documento(
   Titulo, Datas, Autor, Conteudo, acervo_id
 ) 
 VALUES 
   (
-    'Antonio Gomes Penna: Uma trajetória (...)', '04/08/2010', 
-    'Ana Maria Jacó-Vilela', 'Artigo biográfico sobre o Antonio Gomes Penna.', 
+    'Antonio Gomes Penna: Uma trajetória (...)', 
+    '04/08/2010', 'Ana Maria Jacó-Vilela', 
+    'Artigo biográfico sobre o Antonio Gomes Penna.', 
     5
   );
-
 INSERT INTO Documento(
   Titulo, Datas, Autor, Conteudo, acervo_id
 ) 
 VALUES 
   (
-    'Ciclo de palestra sobre Psicologia do futebol', '01/09/1970', 
-    'Nilton Ribeiro', 'Notícia  - O Jornal', 
-    5
+    'Ciclo de palestra sobre Psicologia do futebol', 
+    '01/09/1970', 'Nilton Ribeiro', 
+    'Notícia  - O Jornal', 5
   );
-
 INSERT INTO Documento(
   Titulo, Datas, Autor, Conteudo, acervo_id
 ) 
 VALUES 
   (
-    'Introdução à Psicologia Contemporânea', '09/08/1978', 
-    'Antonio Gomes Penna', 'Livro sobre a constituição da psicologia moderna.', 
+    'Introdução à Psicologia Contemporânea', 
+    '09/08/1978', 'Antonio Gomes Penna', 
+    'Livro sobre a constituição da psicologia moderna.', 
     5
   );
-
-INSERT INTO Pesquisador(
-  nome, afiliacao, matricula     
-) 
+INSERT INTO Pesquisador(nome, afiliacao, matricula) 
 VALUES 
   (
-    'Camila Rocha da Silva','UFRJ','1236987'      
+    'Camila Rocha da Silva', 'UFRJ', 
+    '1236987'
   );
-
-INSERT INTO Pesquisador(
-  nome, afiliacao, matricula     
-) 
+INSERT INTO Pesquisador(nome, afiliacao, matricula) 
 VALUES 
   (
-    'Maria Luiza Oliveira dos Santos','UFRRJ','9865321'      
+    'Maria Luiza Oliveira dos Santos', 
+    'UFRRJ', '9865321'
   );
-
-INSERT INTO Pesquisador(
-  nome, afiliacao, matricula     
-) 
+INSERT INTO Pesquisador(nome, afiliacao, matricula) 
 VALUES 
   (
-    'Felipe Cavalcante de Souza','UFPR','2301478'      
+    'Felipe Cavalcante de Souza', 'UFPR', 
+    '2301478'
   );
-
-INSERT INTO Pesquisador(
-  nome, afiliacao, matricula     
-) 
+INSERT INTO Pesquisador(nome, afiliacao, matricula) 
 VALUES 
   (
-    'Bianca Gonçalves Lima','UERJ','7453200'      
-  );   
-
-INSERT INTO Pesquisador(
-  nome, afiliacao, matricula     
-) 
-VALUES 
-  (
-    'Mariana Almeida Araújo','UFRS','3698745'      
+    'Bianca Gonçalves Lima', 'UERJ', 
+    '7453200'
   );
-
-INSERT INTO pesquisador_acervo(
-  pesquisador_matricula, acervo_id     
-) 
+INSERT INTO Pesquisador(nome, afiliacao, matricula) 
 VALUES 
   (
-    '1236987',1);
-
+    'Mariana Almeida Araújo', 'UFRS', 
+    '3698745'
+  );
 INSERT INTO pesquisador_acervo(
-  pesquisador_matricula, acervo_id     
+  pesquisador_matricula, acervo_id
 ) 
 VALUES 
-  (
-    '9865321',1);
-
+  ('1236987', 1);
 INSERT INTO pesquisador_acervo(
-  pesquisador_matricula, acervo_id     
+  pesquisador_matricula, acervo_id
 ) 
 VALUES 
-  ('2301478',2);
-
+  ('9865321', 1);
 INSERT INTO pesquisador_acervo(
-  pesquisador_matricula, acervo_id     
+  pesquisador_matricula, acervo_id
 ) 
 VALUES 
-  ('7453200',2);
-
+  ('2301478', 2);
 INSERT INTO pesquisador_acervo(
-  pesquisador_matricula, acervo_id     
+  pesquisador_matricula, acervo_id
 ) 
 VALUES 
-  ('3698745',3);
-
+  ('7453200', 2);
 INSERT INTO pesquisador_acervo(
-  pesquisador_matricula, acervo_id     
+  pesquisador_matricula, acervo_id
 ) 
 VALUES 
-  ('1236987',3);
-
+  ('3698745', 3);
 INSERT INTO pesquisador_acervo(
-  pesquisador_matricula, acervo_id     
+  pesquisador_matricula, acervo_id
 ) 
 VALUES 
-  ('2301478',4);
-
+  ('1236987', 3);
 INSERT INTO pesquisador_acervo(
-  pesquisador_matricula, acervo_id     
+  pesquisador_matricula, acervo_id
 ) 
 VALUES 
-  ('3698745',4);
-
+  ('2301478', 4);
 INSERT INTO pesquisador_acervo(
-  pesquisador_matricula, acervo_id     
+  pesquisador_matricula, acervo_id
 ) 
 VALUES 
-  ('7453200',5),('9865321',5);
-
-
+  ('3698745', 4);
+INSERT INTO pesquisador_acervo(
+  pesquisador_matricula, acervo_id
+) 
+VALUES 
+  ('7453200', 5), 
+  ('9865321', 5);
 -- Consulta do cenário de utilização
 SELECT 
-    d.Titulo, 
-    d.Datas, 
-    d.Autor, 
-    d.Conteudo, 
-    a.tema AS Acervo_Tema, 
-    p.nome AS Pesquisador_Nome
+  d.Titulo, 
+  d.Datas, 
+  d.Autor, 
+  d.Conteudo, 
+  a.tema AS Acervo_Tema, 
+  p.nome AS Pesquisador_Nome 
 FROM 
-    Documento d
-JOIN 
-    Acervo a ON d.acervo_id = a.id
-JOIN 
-    Pesquisador_Acervo pa ON d.acervo_id = pa.acervo_id
-JOIN 
-    Pesquisador p ON pa.pesquisador_matricula = p.matricula
+  Documento d 
+  JOIN Acervo a ON d.acervo_id = a.id 
+  JOIN Pesquisador_Acervo pa ON d.acervo_id = pa.acervo_id 
+  JOIN Pesquisador p ON pa.pesquisador_matricula = p.matricula 
 WHERE 
-    d.Datas BETWEEN '1970-01-01' AND '1979-12-31';
+  d.Datas BETWEEN '1970-01-01' 
+  AND '1979-12-31';
