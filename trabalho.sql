@@ -392,3 +392,15 @@ INSERT INTO pesquisador_acervo(
 ) 
 VALUES 
   ('1236987',3);
+
+INSERT INTO pesquisador_acervo(
+  pesquisador_matricula, acervo_id     
+) 
+VALUES 
+  ('2301478',4);
+
+INSERT INTO pesquisador_acervo(
+  pesquisador_matricula, acervo_id     
+) 
+VALUES 
+  ('3698745',4);
