@@ -294,3 +294,13 @@ VALUES
     'Ana Maria Jacó-Vilela', 'Artigo biográfico sobre o Antonio Gomes Penna.', 
     5
   );
+
+INSERT INTO Documento(
+  Titulo, Datas, Autor, Conteudo, acervo_id
+) 
+VALUES 
+  (
+    'Ciclo de palestra sobre Psicologia do futebol', '01/09/1970', 
+    'Nilton Ribeiro', 'Notícia  - O Jornal', 
+    5
+  );
