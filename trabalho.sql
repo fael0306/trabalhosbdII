@@ -214,3 +214,43 @@ VALUES
     'Isabel Adrados', 'Instrução da atuação do psicólogo frente a diagnósticos.', 
     3
   );
+
+INSERT INTO Documento(
+  Titulo, Datas, Autor, Conteudo, acervo_id
+) 
+VALUES 
+  (
+    'Eliezer Schneider', '03/06/2001', 
+    'Ana Maria Jacó-Vilela', 'Coleção: Pioneiros da Psicologia Brasileira', 
+    4
+  );
+
+INSERT INTO Documento(
+  Titulo, Datas, Autor, Conteudo, acervo_id
+) 
+VALUES 
+  (
+    'Psicologia Social - Histórica Cultural e Política', '28/09/1978', 
+    'Eliezer Schneider', 'Manual de Psicologia Social', 
+    4
+  );
+
+INSERT INTO Documento(
+  Titulo, Datas, Autor, Conteudo, acervo_id
+) 
+VALUES 
+  (
+    'Eliezer Schneider, professor, 81 anos', '04/09/1998', 
+    'Antônio Gomes Penna', 'Jornal O Globo - Obituário', 
+    4
+  );
+
+INSERT INTO Documento(
+  Titulo, Datas, Autor, Conteudo, acervo_id
+) 
+VALUES 
+  (
+    'Eliezer Schneider', '23/10/1996', 
+    'Elza Maria do Socorro Dutra', 'Entrevista com Eliezer Schneider', 
+    4
+  );
