@@ -314,3 +314,36 @@ VALUES
     'Antonio Gomes Penna', 'Livro sobre a constituição da psicologia moderna.', 
     5
   );
+
+INSERT INTO Pesquisador(
+  nome, afiliacao, matricula     
+) 
+VALUES 
+  (
+    'Camila Rocha da Silva','UFRJ','1236987'      
+  );
+
+INSERT INTO Pesquisador(
+  nome, afiliacao, matricula     
+) 
+VALUES 
+  (
+    'Maria Luiza Oliveira dos Santos','UFRRJ','9865321'      
+  );
+
+INSERT INTO Pesquisador(
+  nome, afiliacao, matricula     
+) 
+VALUES 
+  (
+    'Felipe Cavalcante de Souza','UFPR','2301478'      
+  );
+
+INSERT INTO Pesquisador(
+  nome, afiliacao, matricula     
+) 
+VALUES 
+  (
+    'Bianca Gonçalves Lima','UERJ','7453200'      
+  );   
+
