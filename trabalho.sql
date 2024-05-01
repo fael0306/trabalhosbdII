@@ -304,3 +304,13 @@ VALUES
     'Nilton Ribeiro', 'Notícia  - O Jornal', 
     5
   );
+
+INSERT INTO Documento(
+  Titulo, Datas, Autor, Conteudo, acervo_id
+) 
+VALUES 
+  (
+    'Introdução à Psicologia Contemporânea', '09/08/1978', 
+    'Antonio Gomes Penna', 'Livro sobre a constituição da psicologia moderna.', 
+    5
+  );
