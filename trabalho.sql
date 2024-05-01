@@ -274,3 +274,13 @@ VALUES
     'Antonio Gomes Penna', 'Desenvolvimento da Psicologia no Rio de Janeiro', 
     5
   );
+
+INSERT INTO Documento(
+  Titulo, Datas, Autor, Conteudo, acervo_id
+) 
+VALUES 
+  (
+    'História das ideias psicológicas', '05/01/1991', 
+    'Antonio Gomes Penna', 'Comentários epistemológicos sobre as ideias psicológicas.', 
+    5
+  );
