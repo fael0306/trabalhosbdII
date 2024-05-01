@@ -254,3 +254,13 @@ VALUES
     'Elza Maria do Socorro Dutra', 'Entrevista com Eliezer Schneider', 
     4
   );
+
+INSERT INTO Documento(
+  Titulo, Datas, Autor, Conteudo, acervo_id
+) 
+VALUES 
+  (
+    'Eliezer Schneider', '31/01/1971', 
+    'Jornal do Brasil', 'Palestra de Eliezer Schneider sobre conflito de gerações.', 
+    4
+  );
