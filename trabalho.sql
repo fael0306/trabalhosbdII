@@ -28,7 +28,7 @@ CREATE TABLE Pesquisador_Acervo (
   FOREIGN KEY (acervo_id) REFERENCES Acervo(id)
 );
 
-CREATE INDEX idx_datas ON Documento (Datas);
+CREATE INDEX idx_datas_brin ON Documento USING BRIN (Datas);
 
 INSERT INTO Acervo (tema, instituicao) 
 VALUES 
