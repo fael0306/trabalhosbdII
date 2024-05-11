@@ -1,3 +1,9 @@
+CREATE TABLE Acervo (
+  id SERIAL PRIMARY KEY, 
+  tema VARCHAR(100), 
+  instituicao VARCHAR(100)
+);
+
 CREATE TABLE Documento (
   id SERIAL PRIMARY KEY, 
   Titulo VARCHAR(50), 
@@ -6,12 +12,6 @@ CREATE TABLE Documento (
   Conteudo TEXT, 
   acervo_id INT, 
   FOREIGN KEY (acervo_id) REFERENCES Acervo(id)
-);
-
-CREATE TABLE Acervo (
-  id SERIAL PRIMARY KEY, 
-  tema VARCHAR(100), 
-  instituicao VARCHAR(100)
 );
 
 CREATE TABLE Pesquisador (
