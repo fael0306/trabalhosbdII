@@ -88,19 +88,18 @@ VALUES
   ('9865321', 5);
 
 -- Consulta do cenário de utilização
-SELECT 
-  d.Titulo, 
-  d.Datas, 
-  d.Autor, 
-  d.Conteudo, 
-  a.tema AS Acervo_Tema, 
-  STRING_AGG(p.nome, ', ') AS Pesquisadores_Nome
-FROM 
-  Documento d 
-  JOIN Acervo a ON d.acervo_id = a.id 
-  JOIN Pesquisador_Acervo pa ON d.acervo_id = pa.acervo_id 
-  JOIN Pesquisador p ON pa.pesquisador_matricula = p.matricula 
-WHERE 
-  d.Datas BETWEEN '1970-01-01' AND '1979-12-31'
-GROUP BY 
-  d.Titulo, d.Datas, d.Autor, d.Conteudo, a.tema;
+SELECT
+d.Titulo,
+d.Datas,
+d.Autor,
+d.Conteudo,
+a.tema AS Acervo_Tema,
+p.nome AS Pesquisador_Nome
+FROM
+Documento d
+JOIN Acervo a ON d.acervo_id = a.id
+JOIN Pesquisador_Acervo pa ON d.acervo_id = pa.acervo_id
+JOIN Pesquisador p ON pa.pesquisador_matricula = p.matricula
+WHERE
+d.Datas BETWEEN '1970-01-01'
+AND '1979-12-31';
