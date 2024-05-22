@@ -226,25 +226,43 @@ VALUES
   ('7453200', 5), 
   ('9865321', 5);
   
--- Consulta do cenário de utilização
-SELECT 
-  d.Titulo, 
-  d.Datas, 
-  d.Autor, 
-  d.Conteudo, 
-  a.tema AS Acervo_Tema, 
-  STRING_AGG(p.nome, ', ') AS Pesquisador_Nome 
-FROM 
-  Documento d 
-  JOIN Acervo a ON d.acervo_id = a.id 
-  JOIN Pesquisador_Acervo pa ON d.acervo_id = pa.acervo_id 
-  JOIN Pesquisador p ON pa.pesquisador_matricula = p.matricula 
-WHERE 
-  d.Datas BETWEEN '1970-01-01' 
-  AND '1979-12-31' 
-GROUP BY 
-  d.Titulo, 
-  d.Datas, 
-  d.Autor, 
-  d.Conteudo, 
-  a.tema;
+-- Função para consultar a data que preferir
+CREATE OR REPLACE FUNCTION obter_documentos_por_intervalo(
+    data_inicio DATE,
+    data_fim DATE
+)
+RETURNS TABLE (
+    Titulo TEXT,
+    Datas DATE,
+    Autor TEXT,
+    Conteudo TEXT,
+    Acervo_Tema TEXT,
+    Pesquisador_Nome TEXT
+) AS $$
+BEGIN
+    RETURN QUERY
+    SELECT 
+        d.Titulo::TEXT, 
+        d.Datas, 
+        d.Autor::TEXT, 
+        d.Conteudo::TEXT, 
+        a.tema::TEXT AS Acervo_Tema, 
+        STRING_AGG(p.nome, ', ')::TEXT AS Pesquisador_Nome 
+    FROM 
+        Documento d 
+        JOIN Acervo a ON d.acervo_id = a.id 
+        JOIN Pesquisador_Acervo pa ON d.acervo_id = pa.acervo_id 
+        JOIN Pesquisador p ON pa.pesquisador_matricula = p.matricula 
+    WHERE 
+        d.Datas BETWEEN data_inicio AND data_fim
+    GROUP BY 
+        d.Titulo, 
+        d.Datas, 
+        d.Autor, 
+        d.Conteudo, 
+        a.tema;
+END;
+$$ LANGUAGE plpgsql;
+
+-- Usando a função
+SELECT * FROM obter_documentos_por_intervalo('1970-01-01', '1979-12-31');
