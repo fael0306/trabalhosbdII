@@ -3,7 +3,6 @@ CREATE TABLE Acervo (
   tema VARCHAR(100), 
   instituicao VARCHAR(100)
 );
-
 CREATE TABLE Documento (
   id SERIAL PRIMARY KEY, 
   Titulo VARCHAR(50), 
@@ -13,13 +12,11 @@ CREATE TABLE Documento (
   acervo_id INT, 
   FOREIGN KEY (acervo_id) REFERENCES Acervo(id)
 );
-
 CREATE TABLE Pesquisador (
   matricula VARCHAR(30) PRIMARY KEY, 
   nome VARCHAR(50), 
   afiliacao VARCHAR(100)
 );
-
 CREATE TABLE Pesquisador_Acervo (
   pesquisador_matricula VARCHAR(30), 
   acervo_id INT, 
@@ -29,9 +26,7 @@ CREATE TABLE Pesquisador_Acervo (
   FOREIGN KEY (pesquisador_matricula) REFERENCES Pesquisador(matricula), 
   FOREIGN KEY (acervo_id) REFERENCES Acervo(id)
 );
-
 CREATE INDEX idx_datas_brin ON Documento USING BRIN (Datas);
-
 INSERT INTO Acervo (tema, instituicao) 
 VALUES 
   ('Emilio Mira y López', 'UERJ'), 
@@ -39,7 +34,6 @@ VALUES
   ('Isabel Adrados', 'UERJ'), 
   ('Eliezer Schneider', 'UERJ'), 
   ('Antonio Gomes Penna', 'UERJ');
-  
 INSERT INTO Documento (
   Titulo, Datas, Autor, Conteudo, acervo_id
 ) 
@@ -187,7 +181,6 @@ VALUES
     'Livro sobre a constituição da psicologia moderna.', 
     5
   );
-  
 INSERT INTO Pesquisador (nome, afiliacao, matricula) 
 VALUES 
   (
@@ -210,7 +203,6 @@ VALUES
     'Mariana Almeida Araújo', 'UFRS', 
     '3698745'
   );
-  
 INSERT INTO Pesquisador_Acervo (
   pesquisador_matricula, acervo_id
 ) 
@@ -225,44 +217,37 @@ VALUES
   ('3698745', 4), 
   ('7453200', 5), 
   ('9865321', 5);
-  
 -- Função para consultar a data que preferir
-CREATE OR REPLACE FUNCTION obter_documentos_por_intervalo(
-    data_inicio DATE,
-    data_fim DATE
-)
-RETURNS TABLE (
-    Titulo TEXT,
-    Datas DATE,
-    Autor TEXT,
-    Conteudo TEXT,
-    Acervo_Tema TEXT,
-    Pesquisador_Nome TEXT
-) AS $$
-BEGIN
-    RETURN QUERY
-    SELECT 
-        d.Titulo::TEXT, 
-        d.Datas, 
-        d.Autor::TEXT, 
-        d.Conteudo::TEXT, 
-        a.tema::TEXT AS Acervo_Tema, 
-        STRING_AGG(p.nome, ', ')::TEXT AS Pesquisador_Nome 
-    FROM 
-        Documento d 
-        JOIN Acervo a ON d.acervo_id = a.id 
-        JOIN Pesquisador_Acervo pa ON d.acervo_id = pa.acervo_id 
-        JOIN Pesquisador p ON pa.pesquisador_matricula = p.matricula 
-    WHERE 
-        d.Datas BETWEEN data_inicio AND data_fim
-    GROUP BY 
-        d.Titulo, 
-        d.Datas, 
-        d.Autor, 
-        d.Conteudo, 
-        a.tema;
+CREATE 
+OR REPLACE FUNCTION obter_documentos_por_intervalo(data_inicio DATE, data_fim DATE) RETURNS TABLE (
+  Titulo TEXT, Datas DATE, Autor TEXT, 
+  Conteudo TEXT, Acervo_Tema TEXT, Pesquisador_Nome TEXT
+) AS $$ BEGIN RETURN QUERY 
+SELECT 
+  d.Titulo :: TEXT, 
+  d.Datas, 
+  d.Autor :: TEXT, 
+  d.Conteudo :: TEXT, 
+  a.tema :: TEXT AS Acervo_Tema, 
+  STRING_AGG(p.nome, ', '):: TEXT AS Pesquisador_Nome 
+FROM 
+  Documento d 
+  JOIN Acervo a ON d.acervo_id = a.id 
+  JOIN Pesquisador_Acervo pa ON d.acervo_id = pa.acervo_id 
+  JOIN Pesquisador p ON pa.pesquisador_matricula = p.matricula 
+WHERE 
+  d.Datas BETWEEN data_inicio 
+  AND data_fim 
+GROUP BY 
+  d.Titulo, 
+  d.Datas, 
+  d.Autor, 
+  d.Conteudo, 
+  a.tema;
 END;
 $$ LANGUAGE plpgsql;
-
 -- Usando a função
-SELECT * FROM obter_documentos_por_intervalo('1970-01-01', '1979-12-31');
+SELECT 
+  * 
+FROM 
+  obter_documentos_por_intervalo('1970-01-01', '1979-12-31');
