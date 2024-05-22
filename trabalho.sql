@@ -31,6 +31,7 @@ CREATE TABLE Pesquisador_Acervo (
 );
 
 CREATE INDEX idx_datas_brin ON Documento USING BRIN (Datas);
+
 INSERT INTO Acervo (tema, instituicao) 
 VALUES 
   ('Emilio Mira y López', 'UERJ'), 
