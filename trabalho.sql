@@ -274,6 +274,7 @@ WHERE
   d.acervo_id = 2 
 ORDER BY 
   d.Datas;
+
 SELECT 
   * 
 FROM 
