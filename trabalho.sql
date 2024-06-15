@@ -263,16 +263,18 @@ FROM
   obter_documentos_por_intervalo('1970-01-01', '1979-12-31');
 
 -- Visões
-CREATE VIEW documentoscelso AS
+CREATE VIEW documentoscelso AS 
 SELECT 
   d.Titulo, 
   d.Datas, 
   d.Conteudo 
 FROM 
-  Documento d
+  Documento d 
 WHERE 
-  d.acervo_id = 2
+  d.acervo_id = 2 
 ORDER BY 
   d.Datas;
-
-SELECT * FROM documentoscelso;
+SELECT 
+  * 
+FROM 
+  documentoscelso;
