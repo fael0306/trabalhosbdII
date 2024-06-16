@@ -293,4 +293,4 @@ WHERE
 select 
   * 
 from 
-  pesquisadores_emilio;
+  pesquisadoresemilio;
