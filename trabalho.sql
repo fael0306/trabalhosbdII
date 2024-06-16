@@ -294,3 +294,24 @@ select
   * 
 from 
   pesquisadoresemilio;
+
+CREATE 
+OR REPLACE FUNCTION obter_documentos_por_autor(
+  autor_param VARCHAR(50)
+) RETURNS TABLE (
+  titulo TEXT, datas DATE, conteudo TEXT, 
+  acervo_id INT
+) AS $$ BEGIN RETURN QUERY 
+SELECT 
+  documento.titulo :: TEXT, 
+  documento.datas, 
+  documento.conteudo :: TEXT, 
+  documento.acervo_id 
+FROM 
+  documento 
+WHERE 
+  autor_param = autor 
+ORDER BY 
+  datas;
+END;
+$$ LANGUAGE plpgsql;
