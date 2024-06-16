@@ -280,7 +280,7 @@ SELECT
 FROM 
   documentoscelso;
 
-CREATE OR REPLACE VIEW pesquisadores_emilio AS 
+CREATE OR REPLACE VIEW pesquisadoresemilio AS 
 SELECT 
   p.nome, 
   pa.pesquisador_matricula 
