@@ -187,7 +187,7 @@ VALUES
     'Livro sobre a constituição da psicologia moderna.', 
     5
   );
-
+  
 INSERT INTO Pesquisador (nome, afiliacao, matricula) 
 VALUES 
   (
@@ -279,3 +279,18 @@ SELECT
   * 
 FROM 
   documentoscelso;
+
+CREATE OR REPLACE VIEW pesquisadores_emilio AS 
+SELECT 
+  p.nome, 
+  pa.pesquisador_matricula 
+FROM 
+  pesquisador p 
+  JOIN pesquisador_acervo pa ON pa.pesquisador_matricula = p.matricula 
+WHERE 
+  pa.acervo_id = 1;
+  
+select 
+  * 
+from 
+  pesquisadores_emilio;
