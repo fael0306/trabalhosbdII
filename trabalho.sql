@@ -290,9 +290,9 @@ FROM
 WHERE 
   pa.acervo_id = 1;
   
-select 
+SELECT 
   * 
-from 
+FROM 
   pesquisadoresemilio;
 
 -- Funções
