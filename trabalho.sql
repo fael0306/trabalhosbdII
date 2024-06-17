@@ -295,6 +295,8 @@ select
 from 
   pesquisadoresemilio;
 
+
+-- Funções
 CREATE 
 OR REPLACE FUNCTION obter_documentos_por_autor(
   autor_param VARCHAR(50)
