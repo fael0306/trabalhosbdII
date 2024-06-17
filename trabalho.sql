@@ -295,7 +295,6 @@ select
 from 
   pesquisadoresemilio;
 
-
 -- Funções
 CREATE 
 OR REPLACE FUNCTION obter_documentos_por_autor(
