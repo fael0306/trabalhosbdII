@@ -316,3 +316,8 @@ ORDER BY
   datas;
 END;
 $$ LANGUAGE plpgsql;
+
+SELECT 
+  * 
+FROM 
+  obter_documentos_por_autor('Celso Pereira de Sá');
