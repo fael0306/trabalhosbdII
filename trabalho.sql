@@ -295,6 +295,19 @@ SELECT
 FROM 
   pesquisadoresemilio;
 
+SELECT titulo, nomes_pesquisadores FROM (SELECT 
+  d.titulo,d.conteudo, 
+  STRING_AGG(p.nome, ', ') AS nomes_pesquisadores
+FROM 
+  documento d
+JOIN 
+  pesquisador_acervo pa ON d.acervo_id = pa.acervo_id
+JOIN 
+  pesquisador p ON pa.pesquisador_matricula = p.matricula
+GROUP BY 
+  d.titulo,d.conteudo) sub
+ORDER BY titulo;
+
 -- Funções
 CREATE 
 OR REPLACE FUNCTION obter_documentos_por_autor(
