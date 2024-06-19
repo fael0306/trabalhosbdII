@@ -273,6 +273,7 @@ WHERE
   d.acervo_id = 2 
 ORDER BY 
   d.Datas;
+
 SELECT 
   * 
 FROM 
@@ -287,6 +288,7 @@ FROM
   JOIN pesquisador_acervo pa ON pa.pesquisador_matricula = p.matricula 
 WHERE 
   pa.acervo_id = 1;
+
 SELECT 
   * 
 FROM 
