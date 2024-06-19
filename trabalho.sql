@@ -31,7 +31,6 @@ CREATE TABLE Pesquisador_Acervo (
 );
 
 CREATE INDEX idx_datas_brin ON Documento USING BRIN (Datas);
-
 INSERT INTO Acervo (tema, instituicao) 
 VALUES 
   ('Emilio Mira y López', 'UERJ'), 
@@ -39,7 +38,7 @@ VALUES
   ('Isabel Adrados', 'UERJ'), 
   ('Eliezer Schneider', 'UERJ'), 
   ('Antonio Gomes Penna', 'UERJ');
-
+  
 INSERT INTO Documento (
   Titulo, Datas, Autor, Conteudo, acervo_id
 ) 
@@ -210,7 +209,7 @@ VALUES
     'Mariana Almeida Araújo', 'UFRS', 
     '3698745'
   );
-
+  
 INSERT INTO Pesquisador_Acervo (
   pesquisador_matricula, acervo_id
 ) 
@@ -225,7 +224,7 @@ VALUES
   ('3698745', 4), 
   ('7453200', 5), 
   ('9865321', 5);
-
+  
 -- Função para consultar a data que preferir
 CREATE 
 OR REPLACE FUNCTION obter_documentos_por_intervalo(data_inicio DATE, data_fim DATE) RETURNS TABLE (
@@ -261,7 +260,7 @@ SELECT
   * 
 FROM 
   obter_documentos_por_intervalo('1970-01-01', '1979-12-31');
-
+  
 -- Visões
 CREATE VIEW documentoscelso AS 
 SELECT 
@@ -274,12 +273,10 @@ WHERE
   d.acervo_id = 2 
 ORDER BY 
   d.Datas;
-
 SELECT 
   * 
 FROM 
   documentoscelso;
-
 CREATE VIEW pesquisadoresemilio AS 
 SELECT 
   p.nome, 
@@ -289,24 +286,36 @@ FROM
   JOIN pesquisador_acervo pa ON pa.pesquisador_matricula = p.matricula 
 WHERE 
   pa.acervo_id = 1;
-  
 SELECT 
   * 
 FROM 
   pesquisadoresemilio;
-
-SELECT titulo, nomes_pesquisadores FROM (SELECT 
-  d.titulo,d.conteudo, 
-  STRING_AGG(p.nome, ', ') AS nomes_pesquisadores
+CREATE VIEW documentos_por_pesquisadores AS 
+SELECT 
+  titulo, 
+  nomes_pesquisadores 
 FROM 
-  documento d
-JOIN 
-  pesquisador_acervo pa ON d.acervo_id = pa.acervo_id
-JOIN 
-  pesquisador p ON pa.pesquisador_matricula = p.matricula
-GROUP BY 
-  d.titulo,d.conteudo) sub
-ORDER BY titulo;
+  (
+    SELECT 
+      d.titulo, 
+      d.conteudo, 
+      STRING_AGG(p.nome, ', ') AS nomes_pesquisadores 
+    FROM 
+      documento d 
+      JOIN pesquisador_acervo pa ON d.acervo_id = pa.acervo_id 
+      JOIN pesquisador p ON pa.pesquisador_matricula = p.matricula 
+    GROUP BY 
+      d.titulo, 
+      d.conteudo
+  ) sub 
+ORDER BY 
+  titulo;
+  
+CREATE VIEW 
+SELECT 
+  * 
+FROM 
+  documentos_por_pesquisadores;
 
 -- Funções
 CREATE 
