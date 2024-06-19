@@ -277,6 +277,7 @@ SELECT
   * 
 FROM 
   documentoscelso;
+
 CREATE VIEW pesquisadoresemilio AS 
 SELECT 
   p.nome, 
