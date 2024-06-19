@@ -313,7 +313,6 @@ FROM
 ORDER BY 
   titulo;
   
-CREATE VIEW 
 SELECT 
   * 
 FROM 
