@@ -291,6 +291,7 @@ SELECT
   * 
 FROM 
   pesquisadoresemilio;
+
 CREATE VIEW documentos_por_pesquisadores AS 
 SELECT 
   titulo, 
