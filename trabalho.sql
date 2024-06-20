@@ -31,6 +31,7 @@ CREATE TABLE Pesquisador_Acervo (
 );
 
 CREATE INDEX idx_datas_brin ON Documento USING BRIN (Datas);
+
 INSERT INTO Acervo (tema, instituicao) 
 VALUES 
   ('Emilio Mira y López', 'UERJ'), 
@@ -273,12 +274,12 @@ WHERE
   d.acervo_id = 2 
 ORDER BY 
   d.Datas;
-
+  
 SELECT 
   * 
 FROM 
   documentoscelso;
-
+  
 CREATE VIEW pesquisadoresemilio AS 
 SELECT 
   p.nome, 
@@ -288,12 +289,12 @@ FROM
   JOIN pesquisador_acervo pa ON pa.pesquisador_matricula = p.matricula 
 WHERE 
   pa.acervo_id = 1;
-
+  
 SELECT 
   * 
 FROM 
   pesquisadoresemilio;
-
+  
 CREATE VIEW documentos_por_pesquisadores AS 
 SELECT 
   titulo, 
@@ -319,7 +320,7 @@ SELECT
   * 
 FROM 
   documentos_por_pesquisadores;
-
+  
 -- Funções
 CREATE 
 OR REPLACE FUNCTION obter_documentos_por_autor(
@@ -346,14 +347,27 @@ SELECT
   * 
 FROM 
   obter_documentos_por_autor('Celso Pereira de Sá');
-
-CREATE OR REPLACE FUNCTION obter_pesquisadores_por_acervoid(id_param INT) RETURNS TABLE(nome VARCHAR(50), tema VARCHAR(50)) AS $$ BEGIN RETURN QUERY 
-SELECT pp.nome, aa.tema FROM pesquisador pp
-JOIN pesquisador_acervo pa ON pp.matricula=pa.pesquisador_matricula
-JOIN acervo aa ON pa.acervo_id=aa.id
-WHERE pa.acervo_id=id_param
-ORDER BY pp.nome;
+  
+CREATE 
+OR REPLACE FUNCTION obter_pesquisadores_por_acervoid(id_param INT) RETURNS TABLE(
+  nome VARCHAR(50), 
+  tema VARCHAR(50)
+) AS $$ BEGIN RETURN QUERY 
+SELECT 
+  pp.nome, 
+  aa.tema 
+FROM 
+  pesquisador pp 
+  JOIN pesquisador_acervo pa ON pp.matricula = pa.pesquisador_matricula 
+  JOIN acervo aa ON pa.acervo_id = aa.id 
+WHERE 
+  pa.acervo_id = id_param 
+ORDER BY 
+  pp.nome;
 end;
 $$ LANGUAGE plpgsql;
 
-SELECT * FROM obter_pesquisadores_por_acervoid(1);
+SELECT 
+  * 
+FROM 
+  obter_pesquisadores_por_acervoid(1);
