@@ -346,19 +346,3 @@ SELECT
   * 
 FROM 
   obter_documentos_por_autor('Celso Pereira de Sá');
-
-CREATE OR REPLACE FUNCTION documentos_por_pesquisadores(mat_pesq VARCHAR(50)) 
-RETURNS TABLE(titulo TEXT, datas DATE, conteudo TEXT, acervo_id INT) AS $$ BEGIN RETURN QUERY
-    SELECT 
-      d.titulo, 
-      d.datas,
-      d.autor,
-      d.conteudo,
-      d.acervo_id
-    FROM 
-      documento d
-      JOIN acervo aa ON d.acervo_id = aa.acervo_id 
-ORDER BY 
-  titulo;
-END;
-$$ LANGUAGE plpgsql;
