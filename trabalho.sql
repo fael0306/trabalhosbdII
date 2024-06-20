@@ -346,3 +346,12 @@ SELECT
   * 
 FROM 
   obter_documentos_por_autor('Celso Pereira de Sá');
+
+CREATE FUNCTION obter_pesquisadores_por_acervoid(id_param INT) RETURNS TABLE(nome TEXT, tema TEXT) AS $$ BEGIN RETURN QUERY 
+SELECT pp.nome, aa.tema FROM pesquisador pp
+JOIN pesquisador_acervo pa ON pp.matricula=pa.pesquisador_matricula
+JOIN acervo aa ON pa.acervo_id=aa.id
+WHERE acervo_id=id_param
+ORDER BY nome;
+end;
+$$ LANGUAGE plpgsql;
