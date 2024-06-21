@@ -29,7 +29,6 @@ CREATE TABLE Pesquisador_Acervo (
   FOREIGN KEY (pesquisador_matricula) REFERENCES Pesquisador(matricula), 
   FOREIGN KEY (acervo_id) REFERENCES Acervo(id)
 );
-
 CREATE INDEX idx_datas_brin ON Documento USING BRIN (Datas);
 
 INSERT INTO Acervo (tema, instituicao) 
@@ -274,7 +273,6 @@ WHERE
   d.acervo_id = 2 
 ORDER BY 
   d.Datas;
-  
 SELECT 
   * 
 FROM 
@@ -289,7 +287,6 @@ FROM
   JOIN pesquisador_acervo pa ON pa.pesquisador_matricula = p.matricula 
 WHERE 
   pa.acervo_id = 1;
-  
 SELECT 
   * 
 FROM 
@@ -371,12 +368,23 @@ SELECT
   * 
 FROM 
   obter_pesquisadores_por_acervoid(1);
-
-CREATE OR REPLACE FUNCTION obter_quantidade_documentos_por_tema(temaparam VARCHAR(50)) RETURNS INT AS $$ BEGIN RETURN(
-SELECT COUNT(d.id) FROM documento d
-JOIN acervo aa ON aa.id = d.acervo_id
-WHERE temaparam=aa.tema);
+  
+CREATE 
+OR REPLACE FUNCTION obter_quantidade_documentos_por_tema(
+  temaparam VARCHAR(50)
+) RETURNS INT AS $$ BEGIN RETURN(
+  SELECT 
+    COUNT(d.id) 
+  FROM 
+    documento d 
+    JOIN acervo aa ON aa.id = d.acervo_id 
+  WHERE 
+    temaparam = aa.tema
+);
 END;
 $$ LANGUAGE plpgsql;
 
-SELECT * FROM obter_quantidade_documentos_por_tema('Isabel Adrados');
+SELECT 
+  * 
+FROM 
+  obter_quantidade_documentos_por_tema('Isabel Adrados');
