@@ -371,3 +371,8 @@ SELECT
   * 
 FROM 
   obter_pesquisadores_por_acervoid(1);
+
+-- Transformar em função que recebe tema
+SELECT COUNT(d.id) FROM documento d
+JOIN acervo aa ON aa.id = d.acervo_id
+WHERE aa.tema='Isabel Adrados';
