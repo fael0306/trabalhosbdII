@@ -372,7 +372,11 @@ SELECT
 FROM 
   obter_pesquisadores_por_acervoid(1);
 
--- Transformar em função que recebe tema
+CREATE OR REPLACE FUNCTION obter_quantidade_documentos_por_tema(temaparam VARCHAR(50)) RETURNS INT AS $$ BEGIN RETURN(
 SELECT COUNT(d.id) FROM documento d
 JOIN acervo aa ON aa.id = d.acervo_id
-WHERE aa.tema='Isabel Adrados';
+WHERE temaparam=aa.tema);
+END;
+$$ LANGUAGE plpgsql;
+
+SELECT * FROM obter_quantidade_documentos_por_tema('Isabel Adrados');
