@@ -404,7 +404,7 @@ CREATE TRIGGER verificar_data BEFORE INSERT
 OR 
 UPDATE 
   ON documento FOR EACH ROW EXECUTE FUNCTION validar_data();
-
+  
 CREATE 
 OR REPLACE FUNCTION impedir_exclusao_acervo() RETURNS TRIGGER AS $$ BEGIN IF EXISTS (
   SELECT 
