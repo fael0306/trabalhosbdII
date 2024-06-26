@@ -405,6 +405,7 @@ OR
 UPDATE 
   ON documento FOR EACH ROW EXECUTE FUNCTION validar_data();
 
+/* Errado. Não sei o motivo. Erro: Error 42P01 missing FROM-clause entry for table "documento".
 CREATE 
 OR REPLACE FUNCTION impedir_exclusao_acervo() RETURNS TRIGGER AS $$ BEGIN IF NEW.acervo_id = documento.acervo_id THEN RAISE EXCEPTION 'Um acervo com documentos associados não pode ser excluído.';
 END IF;
@@ -413,3 +414,4 @@ END;
 $$ LANGUAGE plpgsql;
 
 CREATE TRIGGER verificar_acervo BEFORE DELETE ON acervo FOR EACH ROW EXECUTE FUNCTION impedir_exclusao_acervo();
+*/
