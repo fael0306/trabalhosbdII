@@ -394,13 +394,11 @@ FROM
 
 -- Triggers
 CREATE 
-OR REPLACE FUNCTION validar_data() RETURNS TRIGGER AS $$ BEGIN 
-IF NEW.datas > CURRENT_DATE THEN RAISE EXCEPTION 'A data do documento não pode ser posterior à data atual.';
+OR REPLACE FUNCTION validar_data() RETURNS TRIGGER AS $$ BEGIN IF NEW.datas > CURRENT_DATE THEN RAISE EXCEPTION 'A data do documento não pode ser posterior à data atual.';
 END IF;
 RETURN NEW;
 END;
 $$ LANGUAGE plpgsql;
-
 CREATE TRIGGER verificar_data BEFORE INSERT 
 OR 
 UPDATE 
