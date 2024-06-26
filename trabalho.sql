@@ -404,3 +404,12 @@ CREATE TRIGGER verificar_data BEFORE INSERT
 OR 
 UPDATE 
   ON documento FOR EACH ROW EXECUTE FUNCTION validar_data();
+
+CREATE 
+OR REPLACE FUNCTION impedir_exclusao_acervo() RETURNS TRIGGER AS $$ BEGIN IF NEW.acervo_id = documento.acervo_id THEN RAISE EXCEPTION 'Um acervo com documentos associados não pode ser excluído.';
+END IF;
+RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER verificar_acervo BEFORE DELETE ON acervo FOR EACH ROW EXECUTE FUNCTION impedir_exclusao_acervo();
