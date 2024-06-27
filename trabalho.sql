@@ -363,7 +363,7 @@ FROM
 WHERE 
   pa.acervo_id = id_param 
 ORDER BY 
-  pp.nome; 
+  pp.nome;
 END;
 $$ LANGUAGE plpgsql;
 
@@ -391,7 +391,7 @@ SELECT
   * 
 FROM 
   obter_quantidade_documentos_por_tema('Isabel Adrados');
-
+  
 -- Triggers
 CREATE 
 OR REPLACE FUNCTION validar_data() RETURNS TRIGGER AS $$ BEGIN IF NEW.datas > CURRENT_DATE THEN RAISE EXCEPTION 'A data do documento não pode ser posterior à data atual.';
@@ -422,23 +422,39 @@ $$ LANGUAGE plpgsql;
 CREATE 
 OR REPLACE TRIGGER verificar_acervo BEFORE DELETE ON acervo FOR EACH ROW EXECUTE FUNCTION impedir_exclusao_acervo();
 
-CREATE TABLE log_atualizacao(iddocumento INT,tituloantigo VARCHAR(50),titulonovo VARCHAR(50),datadamodificacao DATE);
+CREATE TABLE log_atualizacao(
+  iddocumento INT, 
+  tituloantigo VARCHAR(50), 
+  titulonovo VARCHAR(50), 
+  datadamodificacao DATE
+);
 
 CREATE 
-OR REPLACE FUNCTION registro_atualiza() RETURNS TRIGGER AS $$ BEGIN 
-IF NEW.titulo<>OLD.titulo AND NEW.conteudo=OLD.conteudo THEN
-INSERT INTO log_atualizacao(iddocumento,tituloantigo,titulonovo,datadamodificacao) 
+OR REPLACE FUNCTION registro_atualiza() RETURNS TRIGGER AS $$ BEGIN IF NEW.titulo <> OLD.titulo 
+AND NEW.conteudo = OLD.conteudo THEN INSERT INTO log_atualizacao(
+  iddocumento, tituloantigo, titulonovo, 
+  datadamodificacao
+) 
 VALUES 
-(OLD.id,OLD.titulo,NEW.titulo,CURRENT_DATE);
+  (
+    OLD.id, OLD.titulo, NEW.titulo, CURRENT_DATE
+  );
 END IF;
 RETURN NEW;
 END;
 $$ LANGUAGE plpgsql;
 
 -- AFTER, pois caso dê algum problema no UPDATE, as mudanças não serão acionadas.
-CREATE or REPLACE TRIGGER atualiza_registro AFTER UPDATE ON documento FOR EACH ROW
-EXECUTE FUNCTION registro_atualiza();
-
-UPDATE documento
-SET titulo = 'Novo Título', conteudo = 'Visão geral da psicanálise freudiana.'
-WHERE id = 1;
+CREATE 
+or REPLACE TRIGGER atualiza_registro 
+AFTER 
+UPDATE 
+  ON documento FOR EACH ROW EXECUTE FUNCTION registro_atualiza();
+  
+UPDATE 
+  documento 
+SET 
+  titulo = 'Novo Título', 
+  conteudo = 'Visão geral da psicanálise freudiana.' 
+WHERE 
+  id = 1;
