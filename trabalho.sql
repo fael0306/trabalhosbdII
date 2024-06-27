@@ -422,7 +422,6 @@ $$ LANGUAGE plpgsql;
 CREATE 
 OR REPLACE TRIGGER verificar_acervo BEFORE DELETE ON acervo FOR EACH ROW EXECUTE FUNCTION impedir_exclusao_acervo();
 
--- Daqui para baixo, a única coisa que mudou foi que a tabela log_atualizacao foi criada.
 CREATE TABLE log_atualizacao(iddocumento INT,tituloantigo VARCHAR(50),titulonovo VARCHAR(50),datadamodificacao DATE);
 
 CREATE 
@@ -436,6 +435,10 @@ RETURN NEW;
 END;
 $$ LANGUAGE plpgsql;
 
--- AFTER, pois caso dê algum problema no UPDATE, as mudanças não serão acionadas. 
+-- AFTER, pois caso dê algum problema no UPDATE, as mudanças não serão acionadas.
 CREATE or REPLACE TRIGGER atualiza_registro AFTER UPDATE ON documento FOR EACH ROW
 EXECUTE FUNCTION registro_atualiza();
+
+UPDATE documento
+SET titulo = 'Novo Título', conteudo = 'Visão geral da psicanálise freudiana.'
+WHERE id = 1;
