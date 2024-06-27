@@ -434,3 +434,7 @@ END IF;
 RETURN NEW;
 END;
 $$ LANGUAGE plpgsql;
+
+-- AFTER, pois caso dê algum problema no UPDATE, as mudanças não serão acionadas. 
+CREATE or REPLACE TRIGGER atualiza_registro AFTER UPDATE ON documento
+EXECUTE FUNCTION registro_atualiza();
