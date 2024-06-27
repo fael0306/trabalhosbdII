@@ -444,10 +444,10 @@ RETURN NEW;
 END;
 $$ LANGUAGE plpgsql;
 
--- AFTER, pois caso dê algum problema no UPDATE, as mudanças não serão acionadas.
+-- BEFORE, pois caso dê algum problema no UPDATE, as mudanças não serão acionadas.
 CREATE 
 or REPLACE TRIGGER atualiza_registro 
-AFTER 
+BEFORE 
 UPDATE 
   ON documento FOR EACH ROW EXECUTE FUNCTION registro_atualiza();
   
