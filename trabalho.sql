@@ -421,3 +421,16 @@ $$ LANGUAGE plpgsql;
 
 CREATE 
 OR REPLACE TRIGGER verificar_acervo BEFORE DELETE ON acervo FOR EACH ROW EXECUTE FUNCTION impedir_exclusao_acervo();
+
+CREATE TABLE log_atualizacao(iddocumento INT,tituloantigo VARCHAR(50),titulonovo VARCHAR(50),datadamodificacao DATE);
+
+CREATE 
+OR REPLACE FUNCTION registro_atualiza() RETURNS TRIGGER AS $$ BEGIN 
+IF NEW.titulo<>OLD.titulo AND NEW.conteudo=OLD.conteudo THEN
+INSERT INTO log_atualizacao(iddocumento,tituloantigo,titulonovo,datadamodificacao) 
+VALUES 
+(OLD.id,OLD.titulo,NEW.titulo,CURRENT_DATE);
+END IF;
+RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
