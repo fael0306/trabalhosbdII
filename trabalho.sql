@@ -458,3 +458,59 @@ SET
   conteudo = 'Visão geral da psicanálise freudiana.' 
 WHERE 
   id = 1;
+
+-- Plano de execução da consulta do cenário de utilização
+EXPLAIN VERBOSE
+SELECT 
+  d.Titulo, 
+  d.Datas, 
+  d.Autor, 
+  d.Conteudo, 
+  a.tema AS Acervo_Tema, 
+  STRING_AGG(p.nome, ', ') AS Pesquisador_Nome 
+FROM 
+  Documento d 
+  JOIN Acervo a ON d.acervo_id = a.id 
+  JOIN Pesquisador_Acervo pa ON d.acervo_id = pa.acervo_id 
+  JOIN Pesquisador p ON pa.pesquisador_matricula = p.matricula 
+WHERE 
+  d.Datas BETWEEN '1970-01-01' 
+  AND '1979-12-31' 
+GROUP BY 
+  d.Titulo, 
+  d.Datas, 
+  d.Autor, 
+  d.Conteudo, 
+  a.tema;
+
+/* SAÍDA
+                                                                QUERY PLAN                                                                
+------------------------------------------------------------------------------------------------------------------------------------------
+ GroupAggregate  (cost=29.18..29.30 rows=4 width=522)
+   Output: d.titulo, d.datas, d.autor, d.conteudo, a.tema, string_agg((p.nome)::text, ', '::text)
+   Group Key: d.titulo, d.datas, d.autor, d.conteudo, a.tema
+   ->  Sort  (cost=29.18..29.19 rows=4 width=608)
+         Output: d.titulo, d.datas, d.autor, d.conteudo, a.tema, p.nome
+         Sort Key: d.titulo, d.datas, d.autor, d.conteudo, a.tema
+         ->  Nested Loop  (cost=0.44..29.14 rows=4 width=608)
+               Output: d.titulo, d.datas, d.autor, d.conteudo, a.tema, p.nome
+               Inner Unique: true
+               ->  Nested Loop  (cost=0.29..28.23 rows=4 width=568)
+                     Output: d.titulo, d.datas, d.autor, d.conteudo, a.tema, pa.pesquisador_matricula
+                     Join Filter: (d.acervo_id = pa.acervo_id)
+                     ->  Nested Loop  (cost=0.14..22.16 rows=1 width=498)
+                           Output: d.titulo, d.datas, d.autor, d.conteudo, d.acervo_id, a.tema, a.id
+                           Inner Unique: true
+                           ->  Seq Scan on public.documento d  (cost=0.00..13.90 rows=1 width=276)
+                                 Output: d.titulo, d.datas, d.autor, d.conteudo, d.acervo_id
+                                 Filter: ((d.datas >= '1970-01-01'::date) AND (d.datas <= '1979-12-31'::date))
+                           ->  Index Scan using acervo_pkey on public.acervo a  (cost=0.14..8.16 rows=1 width=222)
+                                 Output: a.id, a.tema, a.instituicao
+                                 Index Cond: (a.id = d.acervo_id)
+                     ->  Index Only Scan using pesquisador_acervo_pkey on public.pesquisador_acervo pa  (cost=0.15..6.02 rows=4 width=82)
+                           Output: pa.pesquisador_matricula, pa.acervo_id
+                           Index Cond: (pa.acervo_id = a.id)
+               ->  Index Scan using pesquisador_pkey on public.pesquisador p  (cost=0.14..0.23 rows=1 width=196)
+                     Output: p.nome, p.afiliacao, p.matricula
+                     Index Cond: ((p.matricula)::text = (pa.pesquisador_matricula)::text)
+*/
