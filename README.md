@@ -12,7 +12,7 @@
 - Modelos relacional estendido e orientado a objetos
 - Processamento de transações, protocolos de controle de concorrência, mecanismos de recuperação, sistemas de autorização e segurança
 - Processamento e otimização de consultas, organização física e índices, ambiente C/S, triggers e processamentos armazenados
-
+<br>
 ### Entrar no PostgreSQL via terminal 
 ```bash
 sudo -i -u postgres
