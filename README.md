@@ -1,4 +1,4 @@
-# Ementa da Disciplina
+# Ementas
 
 ## Banco de Dados I
 - Arquitetura de Sistemas Gerenciador de Banco de Dados (SGBD)
