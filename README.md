@@ -18,3 +18,7 @@
 ```bash
 sudo -i -u postgres
 psql
+```
+
+### Bom editor online
+https://sqliteonline.com/
