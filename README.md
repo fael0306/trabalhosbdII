@@ -20,5 +20,14 @@ sudo -i -u postgres
 psql
 ```
 
+### Criar e entrar num Banco de Dados
+```bash
+CRIAR
+create database (nomedobanco)
+ENTRAR
+sudo -i -u postgres
+psql (nomedobanco)
+```
+
 ### Bom editor online
 https://sqliteonline.com/
