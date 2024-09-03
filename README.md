@@ -21,10 +21,12 @@ psql
 ```
 
 ### Criar e entrar num Banco de Dados
-```bash
 CRIAR
+```bash
 create database (nomedobanco)
+```
 ENTRAR
+```bash
 sudo -i -u postgres
 psql (nomedobanco)
 ```
