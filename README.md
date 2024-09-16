@@ -42,3 +42,9 @@ add constraint cp_cliente primary key (cpf);
 alter table cliente
 add constraint cs_cliente foreign key(coluna_cliente) references Tabeladachaveprimaria(coluna_tabela);
 ```
+
+### Adicionar coluna à tabela
+```bash
+alter table TABELA
+add COLUNA int;
+```
