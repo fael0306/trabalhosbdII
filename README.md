@@ -49,6 +49,12 @@ alter table TABELA
 add COLUNA int;
 ```
 
+### Update
+```bash
+update cliente
+set telefone='12345678'
+where cpf='988638273';
+```
 ### Exemplo básico de junção
 ```bash
 select * from 
