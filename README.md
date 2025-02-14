@@ -39,8 +39,8 @@ https://sqliteonline.com/
 alter table cliente
 add constraint cp_cliente primary key (cpf);
 
-alter table cliente
-add constraint cs_cliente foreign key(coluna_cliente) references Tabeladachaveprimaria(coluna_tabela);
+alter table telefone
+add constraint cs_telefone foreign key(id_cliente) references cliente(id_cliente);
 ```
 
 ### Adicionar coluna à tabela
