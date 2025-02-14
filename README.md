@@ -34,7 +34,7 @@ psql (nomedobanco)
 ### Bom editor online
 https://sqliteonline.com/
 
-### Adicionar chave primária ou secundária à tabela
+### Adicionar chave primária ou estrangeira à tabela
 ```bash
 alter table cliente
 add constraint cp_cliente primary key (cpf);
