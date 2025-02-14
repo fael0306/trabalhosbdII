@@ -48,3 +48,10 @@ add constraint cs_telefone foreign key(id_cliente) references cliente(id_cliente
 alter table TABELA
 add COLUNA int;
 ```
+
+### Exemplo básico de junção
+```bash
+select * from 
+cliente cl join telefone te ON cl.id_cliente = te.id_cliente
+where cl.id_cliente=1;
+```
