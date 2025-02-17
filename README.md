@@ -141,3 +141,13 @@ FROM information_schema.columns
 WHERE table_name = 'aluno'
 AND table_schema = 'public';
 ```
+
+### Agrupando: o agrupamento é sempre pelo que NÃO ESTÁ com uma função (nesse caso é "Bairro"). 
+Obs: Só foi necessário colocar o _cl_ antes de id_cliente porque também existe uma coluna com mesmo nome na tabela Endereço.
+```sql
+select count(cl.id_cliente), bairro
+from cliente cl JOIN endereco en
+ON cl.id_cliente=en.id_cliente
+where sexo='F'
+group by bairro;
+```
