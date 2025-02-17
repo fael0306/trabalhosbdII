@@ -66,3 +66,10 @@ select nome,email,numero from cliente ce join telefone te
 on ce.id_cliente=te.id_cliente
 where ce.id_cliente=1;
 ```
+```bash
+select nome,sexo,bairro,uf,tipo,numero from cliente ce 
+join endereco en
+on ce.id_cliente=en.id_cliente
+join telefone te
+on te.id_cliente=ce.id_cliente;
+```
