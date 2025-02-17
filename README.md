@@ -1,75 +1,96 @@
-# Ementas
+# README - Banco de Dados II
 
-## Banco de Dados I
+## Ementas
+
+### Banco de Dados I
 - Arquitetura de Sistemas Gerenciador de Banco de Dados (SGBD)
-- Projeto de Banco de Dados: modelos de entidades e relacionamentos e suas extensões, modelo de dados relacional, algoritmos de decomposição e formas normais
+- Projeto de Banco de Dados:
+  - Modelos de entidades e relacionamentos e suas extensões
+  - Modelo de dados relacional
+  - Algoritmos de decomposição e formas normais
 - Controle de restrições de integridade
 - Noções básicas de transações
-- Linguagens de consultas: Cálculo relacional, álgebra relacional e SQL, Visões e índices secundários
+- Linguagens de consultas:
+  - Cálculo relacional
+  - Álgebra relacional e SQL
+  - Visões e índices secundários
 
-## Banco de Dados II
+### Banco de Dados II
 - Conceitos avançados em Banco de Dados
 - Modelos relacional estendido e orientado a objetos
-- Processamento de transações, protocolos de controle de concorrência, mecanismos de recuperação, sistemas de autorização e segurança
-- Processamento e otimização de consultas, organização física e índices, ambiente C/S, triggers e processamentos armazenados
+- Processamento de transações:
+  - Protocolos de controle de concorrência
+  - Mecanismos de recuperação
+  - Sistemas de autorização e segurança
+- Processamento e otimização de consultas:
+  - Organização física e índices
+  - Ambiente Cliente/Servidor
+  - Triggers e procedimentos armazenados
 
+## Comandos Úteis
 
-### Entrar no PostgreSQL via terminal 
+### Acessar o PostgreSQL via Terminal
 ```bash
 sudo -i -u postgres
 psql
 ```
 
-### Criar e entrar num Banco de Dados
-CRIAR
-```bash
-create database (nomedobanco)
+### Criar e Acessar um Banco de Dados
+Criar:
+```sql
+CREATE DATABASE nomedobanco;
 ```
-ENTRAR
+Acessar:
 ```bash
 sudo -i -u postgres
-psql (nomedobanco)
+psql nomedobanco
 ```
 
-### Bom editor online
-https://sqliteonline.com/
+### Editor SQL Online Recomendado
+[SQLite Online](https://sqliteonline.com/)
 
-### Adicionar chave primária ou estrangeira à tabela
-```bash
-alter table cliente
-add constraint cp_cliente primary key (cpf);
+### Alterações em Tabelas
 
-alter table telefone
-add constraint cs_telefone foreign key(id_cliente) references cliente(id_cliente);
-```
+#### Adicionar Chave Primária ou Estrangeira
+```sql
+ALTER TABLE cliente
+ADD CONSTRAINT cp_cliente PRIMARY KEY (cpf);
 
-### Adicionar coluna à tabela
-```bash
-alter table TABELA
-add COLUNA int;
+ALTER TABLE telefone
+ADD CONSTRAINT cs_telefone FOREIGN KEY (id_cliente) REFERENCES cliente(id_cliente);
 ```
 
-### Update
-```bash
-update cliente
-set telefone='12345678'
-where cpf='988638273';
+#### Adicionar Coluna à Tabela
+```sql
+ALTER TABLE tabela
+ADD coluna INT;
 ```
-### Exemplos básicos de junção
-```bash
-select * from 
-cliente cl join telefone te ON cl.id_cliente = te.id_cliente
-where cl.id_cliente=1;
+
+### Atualizar Dados (UPDATE)
+```sql
+UPDATE cliente
+SET telefone = '12345678'
+WHERE cpf = '988638273';
 ```
-```bash
-select nome,email,numero from cliente ce join telefone te
-on ce.id_cliente=te.id_cliente
-where ce.id_cliente=1;
+
+## Exemplos de Junções (JOIN)
+
+#### Junção Simples
+```sql
+SELECT * FROM cliente cl
+JOIN telefone te ON cl.id_cliente = te.id_cliente
+WHERE cl.id_cliente = 1;
 ```
-```bash
-select nome,sexo,bairro,uf,tipo,numero from cliente ce 
-join endereco en
-on ce.id_cliente=en.id_cliente
-join telefone te
-on te.id_cliente=ce.id_cliente;
+
+#### Selecionando Campos Específicos
+```sql
+SELECT nome, email, numero FROM cliente ce
+JOIN telefone te ON ce.id_cliente = te.id_cliente
+WHERE ce.id_cliente = 1;
 ```
+
+#### Junção com Múltiplas Tabelas
+```sql
+SELECT nome, sexo, bairro, uf, tipo, numero FROM cliente ce
+JOIN endereco en ON ce.id_cliente = en.id_cliente
+JOIN telefone te ON te.id_cliente = ce.id_cliente;
