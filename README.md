@@ -71,7 +71,8 @@ RENAME COLUMN preco TO valor_unitario;
 ```
 ```sql
 ALTER TABLE produto 
-ALTER COLUMN valor_unitario SET NOT NULL;
+ALTER COLUMN valor_unitario 
+SET DATA TYPE FLOAT USING valor_unitario::FLOAT;
 ```
 
 ### Atualizar Dados (UPDATE)
