@@ -92,3 +92,9 @@ WHERE ce.id_cliente = 1;
 SELECT nome, sexo, bairro, uf, tipo, numero FROM cliente ce
 JOIN endereco en ON ce.id_cliente = en.id_cliente
 JOIN telefone te ON te.id_cliente = ce.id_cliente;
+```
+
+### Sunindo dados de CSV
+```sql
+\copy nome_da_tabela FROM 'arquivo.csv' DELIMITER ',' CSV HEADER;
+```
