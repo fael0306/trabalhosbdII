@@ -120,7 +120,7 @@ SELECT SUM(valor_unitario) AS soma_vu, SUM(valor_unitario)/COUNT(valor_unitario)
 FROM produto;
 ```
 
-## Fazendo contagem dupla
+### Fazendo contagem dupla
 ```sql
 SELECT 
     (SELECT COUNT(*) FROM cliente WHERE sexo = 'F') AS cont_mulheres,
