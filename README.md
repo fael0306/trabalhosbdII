@@ -119,3 +119,10 @@ FROM produto;
 SELECT SUM(valor_unitario) AS soma_vu, SUM(valor_unitario)/COUNT(valor_unitario) AS media 
 FROM produto;
 ```
+
+### Mostrar os nomes de todas as tabelas (PostgreSQL)
+```sql
+SELECT tablename as Tabelas
+FROM pg_tables
+WHERE schemaname = 'public';
+```
