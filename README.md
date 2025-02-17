@@ -98,3 +98,13 @@ JOIN telefone te ON te.id_cliente = ce.id_cliente;
 ```sql
 \copy nome_da_tabela FROM '\caminho\do\arquivo\tabela.csv' DELIMITER ',' CSV HEADER;
 ```
+
+#### Mudando nome e tipo da coluna
+```sql
+ALTER TABLE produto 
+RENAME COLUMN preco TO valor_unitario;
+```
+```sql
+ALTER TABLE produto 
+ALTER COLUMN valor_unitario SET NOT NULL;
+```
