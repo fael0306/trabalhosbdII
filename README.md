@@ -113,7 +113,7 @@ JOIN telefone te ON te.id_cliente = ce.id_cliente;
 ```sql
 SELECT SUM(valor_unitario) AS soma_vu FROM produto
 SELECT SUM(valor_unitario)/COUNT(valor_unitario) AS media
-FROM produto
+FROM produto;
 
 SELECT SUM(valor_unitario) AS soma_vu, SUM(valor_unitario)/COUNT(valor_unitario) AS media 
 FROM produto;
