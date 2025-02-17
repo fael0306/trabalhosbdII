@@ -126,3 +126,11 @@ SELECT tablename as Tabelas
 FROM pg_tables
 WHERE schemaname = 'public';
 ```
+
+### Mostrar tipos de dados de uma tabela
+```sql
+SELECT column_name, data_type
+FROM information_schema.columns
+WHERE table_name = 'aluno'
+```
+AND table_schema = 'public';
