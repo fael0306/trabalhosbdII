@@ -55,9 +55,14 @@ update cliente
 set telefone='12345678'
 where cpf='988638273';
 ```
-### Exemplo básico de junção
+### Exemplos básicos de junção
 ```bash
 select * from 
 cliente cl join telefone te ON cl.id_cliente = te.id_cliente
 where cl.id_cliente=1;
+```
+```bash
+select nome,email,numero from cliente ce join telefone te
+on ce.id_cliente=te.id_cliente
+where ce.id_cliente=1;
 ```
