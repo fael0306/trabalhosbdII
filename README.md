@@ -94,7 +94,7 @@ JOIN endereco en ON ce.id_cliente = en.id_cliente
 JOIN telefone te ON te.id_cliente = ce.id_cliente;
 ```
 
-### Sunindo dados de CSV
+### Subindo dados de CSV (Obs: a tabela precisa existir)
 ```sql
 \copy nome_da_tabela FROM '\caminho\do\arquivo\tabela.csv' DELIMITER ',' CSV HEADER;
 ```
