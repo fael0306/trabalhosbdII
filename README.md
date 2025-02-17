@@ -1,5 +1,3 @@
-# README - Banco de Dados II
-
 ## Ementas
 
 ### Banco de Dados I
