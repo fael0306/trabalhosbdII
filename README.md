@@ -96,5 +96,5 @@ JOIN telefone te ON te.id_cliente = ce.id_cliente;
 
 ### Sunindo dados de CSV
 ```sql
-\copy nome_da_tabela FROM 'arquivo.csv' DELIMITER ',' CSV HEADER;
+\copy nome_da_tabela FROM '\caminho\do\arquivo\tabela.csv' DELIMITER ',' CSV HEADER;
 ```
