@@ -111,9 +111,10 @@ JOIN telefone te ON te.id_cliente = ce.id_cliente;
 
 ### Somando e fazendo média (separado e junto)
 ```sql
-select SUM(valor_unitario) as soma_vu from produto
-select SUM(valor_unitario)/count(valor_unitario) as media from produto
+SELECT SUM(valor_unitario) AS soma_vu FROM produto
+SELECT SUM(valor_unitario)/COUNT(valor_unitario) AS media
+FROM produto
 
-select SUM(valor_unitario) as soma_vu, SUM(valor_unitario)/count(valor_unitario) as media 
-from produto;
+SELECT SUM(valor_unitario) AS soma_vu, SUM(valor_unitario)/COUNT(valor_unitario) AS media 
+FROM produto;
 ```
