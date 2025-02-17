@@ -108,3 +108,12 @@ JOIN telefone te ON te.id_cliente = ce.id_cliente;
 ```sql
 \copy nome_da_tabela FROM '\caminho\do\arquivo\tabela.csv' DELIMITER ',' CSV HEADER;
 ```
+
+### Somando e fazendo média (separado e junto)
+```sql
+select SUM(valor_unitario) as soma_vu from produto
+select SUM(valor_unitario)/count(valor_unitario) as media from produto
+
+select SUM(valor_unitario) as soma_vu, SUM(valor_unitario)/count(valor_unitario) as media 
+from produto;
+```
