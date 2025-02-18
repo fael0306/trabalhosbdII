@@ -151,3 +151,9 @@ ON cl.id_cliente=en.id_cliente
 where sexo='F'
 group by bairro;
 ```
+
+### Selecionando e modificando valores nulos
+```sql
+SELECT nome, cpf, coalesce(email,'Desconhecido') as email from cliente
+where email is NULL;
+```
